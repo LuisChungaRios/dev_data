@@ -5,4 +5,10 @@
 // const example = () => {
 //   return 'example';
 // };
+
 // window.example = example;
+var newArray = INJURIES.filter(function (obj) {
+  return(parseInt(obj.Year) === 1960);
+  
+});
+console.log(newArray);
