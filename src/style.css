@@ -1,0 +1,39 @@
+*{
+margin: 0%;
+padding: 0%;
+text-align: center;
+box-sizing: border-box;
+}
+
+.container{
+    background-color: rgb(144, 211, 255);
+    width: 90%;
+    margin: 2% auto;
+    display: table;
+    padding: 2% 0%;
+}
+
+.sm-3col{
+    float: left;
+    background-color: rgb(255, 255, 255, 0.5);
+    margin: 0% 2%;
+    width: 23.5%;
+}
+
+.sm-9col{
+    float: left;
+    width: 70.5%;
+    background-color: rgb(255, 255, 255, 0.5);
+}
+
+.sm-4col{
+    float: left;
+    background-color: rgb(255, 255, 255, 0.5);
+    width: 30.7%;
+    margin: 0% 2%;
+}
+
+h1{
+    font-size: 3.8em;
+}
+
