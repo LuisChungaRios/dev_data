@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
     const newInjuries = [];
     const indexInjuries = [{name: 'Ocupantes de Bus', index: 2},{name : 'Motociclistas', index : 13}, {name: 'Pasajeros de auto', index: 20},{name: 'Ciclistas', index: 23}, {name: 'Peatones', index: 24}, {name: 'Botes recreacionales', index: 36}, {name: 'Año', index: 48}];
-    const selectList = document.createDocumentFragment()
+    const selectList = document.createDocumentFragment() 
     const divList = document.createDocumentFragment()
     const selectDom = document.getElementById('yearSelect')
     const container_description = document.getElementById('container_description')
@@ -49,16 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
          return template
      }
     // Creamos una función para crear los option
+    // value = 2018-03-24
+    // value = 2018
+    // split genera un arreglo 
     const createOption = (value) => {
-        let year = value.split('-')
+        
+        let year = new Date(value.replace('-',',')).getFullYear()
+      
         let option = document.createElement('option')
         option.value = value 
-        option.textContent = year[0]
+        option.textContent = year
        
       return  selectList.appendChild(option)
     }
     
-    // recorremos el nuevo array y creamos los option  
+    // recorremos el nuevo array y creamos los option  y pintamos los objetos 
     newInjuries.forEach(element => {
         let array = []
         array.push(element)
@@ -67,26 +72,29 @@ document.addEventListener('DOMContentLoaded', () => {
         let div = document.createElement('div')
             div.setAttribute('class','container-description container')
             div.innerHTML = data
-      
         divList.appendChild(div)
         createOption(element['Año'])
     });
-
+    // pintar option y obj
     selectDom.appendChild(selectList)
     container_description.appendChild(divList)
 
     // Evento change del select 
     
     selectDom.addEventListener('change', e =>  {
-
+      
         let date = e.target.value
-        if (date !== 0) {
+        if (date != 0) {
         let data = newInjuries.filter( a => a['Año'] == date)
             data = removeUndefined(data)
           
         let template = draw(data)
             container_description.innerHTML = template
         }
+        else {
+            return ''
+        }
+       
     })
  
 
